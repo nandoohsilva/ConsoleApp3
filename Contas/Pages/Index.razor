@@ -1,0 +1,13 @@
+﻿@page "/"
+@inject DadosCarteiras dados
+<p>Data do Sistema:</p>
+<br>
+<p>@dados.DataDoSistema</p>
+
+<br><br>
+<p>Atualizar Data</p>
+
+<input type="datetime" @bind=dados.DataDoSistema></input>
+
+<br>
+<button>Cobrar Tarifas (Todos as Contas) </button>
