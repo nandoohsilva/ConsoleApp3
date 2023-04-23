@@ -52,7 +52,8 @@
             if (ValorTransferencia > 1000 )// se valor da trasnferencia for maior que 1000, vai executar a condição abaixo
             {
                 
-                if (Cpf_Verificar != destino.Cpf(0, 3))// se Cpf_Verificar for diferente do cpf da conta destino do indice 0 e 3, não executa a operação.
+                if (Cpf_Verificar != destino.Cpf.Substring(0, 3))// se Cpf_Verificar for diferente do cpf da conta destino do indice 0 e 3, não executa a operação.
+                // destino.Cpf.Substring -> destino da conta, chamo o metodo cpf, que está salvo o cpf digitado no início odne cria a conta, vai chamar o métdo e vai analisar uma parte da string, por isso o substring.
                 {
                     transferenciaOk = false;
                     return;
