@@ -7,11 +7,11 @@
 
 @if (SaqueOk is not null)
 {
-    @if (SaqueOk == true)
+    @if (SaqueOk == true)// se SaqueOk for verdadeiro, executa a mensagem abaixo.
     {
         <h1>Saque Realizado com sucesso!</h1>
     }
-    else
+    else// senão for verdadeiro executa a msg abaixo.
     {
         <h1>Erro! não foi possivel realizar está operação</h1>
     }
@@ -21,12 +21,12 @@
     [Parameter]
     public Carteira? Conta { get; set; }
 
-    private bool? SaqueOk = null;
-    private double valor;
+    private bool? SaqueOk = null;// saque como nulo
+    private double valor;//valor do tipo double
 
     private void Sacar()
     {       
-        SaqueOk = Conta.Sacar(valor);
+        SaqueOk = Conta.Sacar(valor);// SaqueOk= Conta.métodosacar(valor)
     }
 
 }

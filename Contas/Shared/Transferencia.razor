@@ -9,7 +9,11 @@
 <p>Valor da Transferencia</p>
 <input type="number" @bind=ValorTransferencia/>
 <br><br>
+<p>Digite os 3 primeiros números do cpf da conta destino:</p>
+<input type="text" @bind=Cpf_Verificar />
+    
 <button @onclick=Transferir > Confirma Transferencia</button>
+
 }
 
 @if(transferenciaOk is not null)
@@ -38,12 +42,24 @@
     bool? transferenciaOk = null;
     string contaDestino;
     double ValorTransferencia;
+    string Cpf_Verificar;
 
     public void Transferir()
     {
         Carteira destino =  dados.ListaDados.FirstOrDefault(c => c.Dono == contaDestino);
         if (destino is not null)
         {
+            if (ValorTransferencia > 1000 )// se valor da trasnferencia for maior que 1000, vai executar a condição abaixo
+            {
+                
+                if (Cpf_Verificar != destino.Cpf(0, 3))// se Cpf_Verificar for diferente do cpf da conta destino do indice 0 e 3, não executa a operação.
+                {
+                    transferenciaOk = false;
+                    return;
+                }
+            }
+
+
             Conta.Transferir(destino, ValorTransferencia);
             transferenciaOk = true;
         }

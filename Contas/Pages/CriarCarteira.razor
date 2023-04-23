@@ -13,6 +13,8 @@
 <button class="btn btn-primary" @onclick="CriarConta">
 <br><br>
 <input type="number" @bind=numero_da_conta/>
+<br><br>
+<input type="text" @bind=cpf/>
 
     Criar Conta</button>
 
@@ -22,6 +24,7 @@
 
 @code {
     private string nome;
+    private string cpf; //variável cpf
     private int numero_da_conta;// new variável
     private double valor;
     private string mensagem="";
@@ -30,11 +33,12 @@
     {
         Carteira novaConta = new Carteira();
 
+        novaConta.Cpf = cpf;
         novaConta.Numero_da_conta = numero_da_conta;
         novaConta.Dono = nome;
         novaConta.Depositar(valor);
         dados.ListaDados.Add(novaConta);
-        mensagem = $"Carteira Criada com Sucesso ({nome} Saldo:{valor} {numero_da_conta})";
+        mensagem = $"Carteira Criada com Sucesso ({nome} Saldo:{valor} {numero_da_conta} Cpf:{cpf})";
         nome = "";
         valor = 0;
     }
